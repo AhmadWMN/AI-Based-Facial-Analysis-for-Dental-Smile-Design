@@ -1,0 +1,15 @@
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+
+  .print-surface {
+    box-shadow: none !important;
+    border-color: #c6d2e3 !important;
+    background: #ffffff !important;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+}

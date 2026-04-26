@@ -1,0 +1,23 @@
+
+> ai-dental-smile-design-assistant@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 1082ms (513 modules)
+ GET / 200 in 1317ms
+ GET / 200 in 59ms
+ ✓ Compiled /api/analyze in 460ms (402 modules)
+ POST /api/analyze 200 in 624ms
+ POST /api/analyze 200 in 15ms
+ POST /api/analyze 200 in 10ms
+ GET / 200 in 130ms
+ POST /api/analyze 200 in 9ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1900ms (532 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2103ms
