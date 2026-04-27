@@ -24,6 +24,8 @@ Focus on:
 - Jaw line
 - Lip line
 - Suggested anterior tooth form
+- Suggested tooth color/shade range for a natural smile design
+- Suggested anterior tooth size/proportions
 - Smile line recommendation
 - Midline recommendation
 - General esthetic notes

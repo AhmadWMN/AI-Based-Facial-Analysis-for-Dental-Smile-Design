@@ -91,6 +91,8 @@ export const translations = {
         jawLine: "Jaw Line",
         lipLine: "Lip Line",
         suggestedToothForm: "Suggested Tooth Form",
+        suggestedToothColor: "لون الأسنان المقترح",
+        suggestedToothSize: "حجم الأسنان المقترح",
         smileLineRecommendation: "Smile Line Recommendation",
         midlineRecommendation: "Midline Recommendation"
       },
@@ -202,6 +204,8 @@ export const translations = {
         jawLine: "خط الفك",
         lipLine: "خط الشفاه",
         suggestedToothForm: "شكل الأسنان الأمامية المقترح",
+        suggestedToothColor: "Suggested Tooth Color",
+        suggestedToothSize: "Suggested Tooth Size",
         smileLineRecommendation: "توصية خط الابتسامة",
         midlineRecommendation: "توصية الخط المتوسط"
       },

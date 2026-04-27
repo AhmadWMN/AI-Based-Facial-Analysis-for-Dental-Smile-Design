@@ -35,6 +35,8 @@ export function ResultsDashboard({ analysis, source, analyzedAt }: ResultsDashbo
         <ResultCard title={t.results.cards.jawLine} value={analysis.jawLine} />
         <ResultCard title={t.results.cards.lipLine} value={analysis.lipLine} />
         <ResultCard title={t.results.cards.suggestedToothForm} value={analysis.suggestedToothForm} />
+        <ResultCard title={t.results.cards.suggestedToothColor} value={analysis.suggestedToothColor} />
+        <ResultCard title={t.results.cards.suggestedToothSize} value={analysis.suggestedToothSize} />
         <ResultCard title={t.results.cards.smileLineRecommendation} value={analysis.smileLineRecommendation} />
         <ResultCard title={t.results.cards.midlineRecommendation} value={analysis.midlineRecommendation} />
       </div>

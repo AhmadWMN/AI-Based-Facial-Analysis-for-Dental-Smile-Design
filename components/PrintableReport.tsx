@@ -18,6 +18,8 @@ export function PrintableReport({ analysis, analyzedAt }: PrintableReportProps) 
     { label: t.results.cards.jawLine, value: analysis.jawLine },
     { label: t.results.cards.lipLine, value: analysis.lipLine },
     { label: t.results.cards.suggestedToothForm, value: analysis.suggestedToothForm },
+    { label: t.results.cards.suggestedToothColor, value: analysis.suggestedToothColor },
+    { label: t.results.cards.suggestedToothSize, value: analysis.suggestedToothSize },
     { label: t.results.cards.smileLineRecommendation, value: analysis.smileLineRecommendation },
     { label: t.results.cards.midlineRecommendation, value: analysis.midlineRecommendation },
     { label: t.results.notesTitle, value: analysis.estheticNotes }

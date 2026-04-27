@@ -7,6 +7,8 @@ export interface FaceAnalysisResult {
   jawLine: string;
   lipLine: string;
   suggestedToothForm: string;
+  suggestedToothColor: string;
+  suggestedToothSize: string;
   smileLineRecommendation: string;
   midlineRecommendation: string;
   estheticNotes: string;

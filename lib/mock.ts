@@ -13,6 +13,10 @@ const fallbackMockAnalysisEn: FaceAnalysisResult = {
     "Average lip mobility with a medium smile reveal; upper lip line supports conservative incisal exposure.",
   suggestedToothForm:
     "Use a softly contoured oval-to-ovoid anterior tooth form to harmonize with facial curvature.",
+  suggestedToothColor:
+    "Choose a natural light shade range such as A1-B1 rather than an overly opaque white; final shade should be matched under neutral lighting.",
+  suggestedToothSize:
+    "Use medium-width central incisors with balanced length, keeping laterals slightly narrower and canines proportional to the smile corridor.",
   smileLineRecommendation:
     "Follow a gentle convex smile arc parallel to the lower lip to improve visual harmony.",
   midlineRecommendation:
@@ -29,6 +33,10 @@ const fallbackMockAnalysisAr: FaceAnalysisResult = {
   jawLine: "يبدو خط الفك ناعما مع تحديد متوسط، مما يدعم تصميما ترميميا ناعما إلى متوازن.",
   lipLine: "حركة الشفاه متوسطة مع انكشاف ابتسامة معتدل؛ ويدعم خط الشفة العلوية انكشافا تحفظيا لحافة القواطع.",
   suggestedToothForm: "يوصى بشكل أسنان أمامية بيضاوي ناعم ليتناغم مع انحناءات الوجه.",
+  suggestedToothColor:
+    "اختر درجة فاتحة طبيعية مثل A1-B1 بدل البياض الشديد، ثم أكد اللون النهائي تحت إضاءة محايدة.",
+  suggestedToothSize:
+    "استخدم قواطع مركزية بعرض متوسط وطول متوازن، مع قواطع جانبية أضيق قليلا وأنياب متناسبة.",
   smileLineRecommendation: "اتبع قوس ابتسامة محدبا لطيفا موازيا للشفة السفلية لتحسين الانسجام البصري.",
   midlineRecommendation: "اجعل الخط المتوسط السني قريبا من الخط المتوسط للوجه، مع تعديل بسيط حسب محاذاة النثرة الشفوية.",
   estheticNotes:

@@ -9,6 +9,8 @@ export const faceAnalysisSchema = z.object({
   jawLine: z.string().min(3),
   lipLine: z.string().min(3),
   suggestedToothForm: z.string().min(3),
+  suggestedToothColor: z.string().min(3),
+  suggestedToothSize: z.string().min(3),
   smileLineRecommendation: z.string().min(3),
   midlineRecommendation: z.string().min(3),
   estheticNotes: z.string().min(10)
@@ -31,6 +33,8 @@ export const faceAnalysisTextFormat = {
       jawLine: { type: "string" },
       lipLine: { type: "string" },
       suggestedToothForm: { type: "string" },
+      suggestedToothColor: { type: "string" },
+      suggestedToothSize: { type: "string" },
       smileLineRecommendation: { type: "string" },
       midlineRecommendation: { type: "string" },
       estheticNotes: { type: "string" }
@@ -42,6 +46,8 @@ export const faceAnalysisTextFormat = {
       "jawLine",
       "lipLine",
       "suggestedToothForm",
+      "suggestedToothColor",
+      "suggestedToothSize",
       "smileLineRecommendation",
       "midlineRecommendation",
       "estheticNotes"
