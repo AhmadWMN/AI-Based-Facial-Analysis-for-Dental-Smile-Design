@@ -16,7 +16,7 @@ export interface FaceAnalysisResult {
 
 export interface AnalyzeApiSuccessResponse {
   success: true;
-  source: "openai" | "mock";
+  source: "openai" | "gemini" | "openrouter" | "mock";
   analyzedAt: string;
   message?: string;
   data: FaceAnalysisResult;

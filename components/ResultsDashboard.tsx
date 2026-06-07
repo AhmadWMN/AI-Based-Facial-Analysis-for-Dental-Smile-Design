@@ -6,7 +6,7 @@ import type { FaceAnalysisResult } from "@/types/analysis";
 
 interface ResultsDashboardProps {
   analysis: FaceAnalysisResult;
-  source: "openai" | "mock";
+  source: "openai" | "gemini" | "openrouter" | "mock";
   analyzedAt: string;
 }
 

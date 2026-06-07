@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
+import { analyzeFaceImageWithGemini } from "@/lib/gemini";
 import { normalizeLocale, translations } from "@/lib/i18n";
 import { getFallbackMockAnalysis } from "@/lib/mock";
 import { analyzeFaceImageWithOpenAI } from "@/lib/openai";
+import { analyzeFaceImageWithOpenRouter } from "@/lib/openrouter";
 import type { AnalyzeApiResponse } from "@/types/analysis";
 
 export const runtime = "nodejs";
@@ -11,6 +13,13 @@ export const runtime = "nodejs";
 const MAX_FILE_SIZE_BYTES = 8 * 1024 * 1024;
 const ACCEPTED_IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
 const DEMO_MODE_ENABLED = process.env.DEMO_MODE === "true";
+const AI_PROVIDER = process.env.AI_PROVIDER === "openai" || process.env.AI_PROVIDER === "gemini" ? process.env.AI_PROVIDER : "openrouter";
+const HAS_AI_API_KEY =
+  AI_PROVIDER === "openai"
+    ? Boolean(process.env.OPENAI_API_KEY)
+    : AI_PROVIDER === "gemini"
+      ? Boolean(process.env.GEMINI_API_KEY)
+      : Boolean(process.env.OPENROUTER_API_KEY);
 
 type OpenAIErrorShape = {
   status?: number;
@@ -37,8 +46,7 @@ function buildErrorResponse(message: string, status = 400) {
 
 function getFallbackMessage(error: unknown, locale: "en" | "ar"): string {
   const messages = translations[locale].api;
-  const hasApiKey = Boolean(process.env.OPENAI_API_KEY);
-  if (!hasApiKey) {
+  if (!HAS_AI_API_KEY) {
     return messages.liveMissingApiKey;
   }
 
@@ -91,12 +99,12 @@ export async function POST(request: Request) {
       return buildErrorResponse(messages.imageTooLarge);
     }
 
-    if (DEMO_MODE_ENABLED) {
+    if (DEMO_MODE_ENABLED || !HAS_AI_API_KEY) {
       return NextResponse.json<AnalyzeApiResponse>({
         success: true,
         source: "mock",
         analyzedAt: new Date().toISOString(),
-        message: messages.demoMode,
+        message: DEMO_MODE_ENABLED ? messages.demoMode : messages.liveMissingApiKey,
         data: getFallbackMockAnalysis(locale)
       });
     }
@@ -105,16 +113,21 @@ export async function POST(request: Request) {
     const imageDataUrl = `data:${image.type};base64,${buffer.toString("base64")}`;
 
     try {
-      const analysis = await analyzeFaceImageWithOpenAI(imageDataUrl, locale);
+      const analysis =
+        AI_PROVIDER === "openai"
+          ? await analyzeFaceImageWithOpenAI(imageDataUrl, locale)
+          : AI_PROVIDER === "gemini"
+            ? await analyzeFaceImageWithGemini(imageDataUrl, locale)
+            : await analyzeFaceImageWithOpenRouter(imageDataUrl, locale);
 
       return NextResponse.json<AnalyzeApiResponse>({
         success: true,
-        source: "openai",
+        source: AI_PROVIDER,
         analyzedAt: new Date().toISOString(),
         data: analysis
       });
     } catch (error) {
-      console.error("OpenAI analysis failed, returning fallback mock data.", error);
+      console.error(`${AI_PROVIDER} analysis failed, returning fallback mock data.`, error);
 
       return NextResponse.json<AnalyzeApiResponse>({
         success: true,

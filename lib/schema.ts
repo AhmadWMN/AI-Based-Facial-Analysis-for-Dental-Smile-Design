@@ -54,3 +54,36 @@ export const faceAnalysisTextFormat = {
     ]
   }
 };
+
+export const geminiFaceAnalysisResponseSchema = {
+  type: "OBJECT",
+  properties: {
+    faceShape: {
+      type: "STRING",
+      enum: ["Oval", "Round", "Square", "Rectangular", "Triangular"]
+    },
+    facialProportion: { type: "STRING" },
+    facialSymmetry: { type: "STRING" },
+    jawLine: { type: "STRING" },
+    lipLine: { type: "STRING" },
+    suggestedToothForm: { type: "STRING" },
+    suggestedToothColor: { type: "STRING" },
+    suggestedToothSize: { type: "STRING" },
+    smileLineRecommendation: { type: "STRING" },
+    midlineRecommendation: { type: "STRING" },
+    estheticNotes: { type: "STRING" }
+  },
+  required: [
+    "faceShape",
+    "facialProportion",
+    "facialSymmetry",
+    "jawLine",
+    "lipLine",
+    "suggestedToothForm",
+    "suggestedToothColor",
+    "suggestedToothSize",
+    "smileLineRecommendation",
+    "midlineRecommendation",
+    "estheticNotes"
+  ]
+} as const;

@@ -81,6 +81,8 @@ export const translations = {
       sourceLabel: "Source",
       sourceValues: {
         openai: "OpenAI",
+        gemini: "Gemini",
+        openrouter: "OpenRouter",
         mock: "Demo Fallback"
       },
       analyzedAt: "Analyzed at",
@@ -194,6 +196,8 @@ export const translations = {
       sourceLabel: "المصدر",
       sourceValues: {
         openai: "OpenAI",
+        gemini: "Gemini",
+        openrouter: "OpenRouter",
         mock: "وضع تجريبي"
       },
       analyzedAt: "وقت التحليل",
