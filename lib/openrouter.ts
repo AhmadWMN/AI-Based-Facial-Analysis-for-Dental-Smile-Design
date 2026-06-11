@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import { faceAnalysisSchema, faceAnalysisTextFormat } from "@/lib/schema";
 import type { FaceAnalysisResult } from "@/types/analysis";
 
-const MODEL_NAME = process.env.OPENROUTER_MODEL ?? "google/gemini-2.0-flash-001";
+const MODEL_NAME = process.env.OPENROUTER_MODEL ?? "google/gemini-2.5-flash";
 
 const SYSTEM_PROMPT = `
 You are an educational dental-esthetic assistant for a graduation project demo.
@@ -141,4 +141,3 @@ export async function analyzeFaceImageWithOpenRouter(imageDataUrl: string, local
   const parsed = parseJsonObject(extractOpenRouterText(payload));
   return faceAnalysisSchema.parse(parsed);
 }
-

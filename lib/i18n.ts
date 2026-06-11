@@ -93,8 +93,8 @@ export const translations = {
         jawLine: "Jaw Line",
         lipLine: "Lip Line",
         suggestedToothForm: "Suggested Tooth Form",
-        suggestedToothColor: "لون الأسنان المقترح",
-        suggestedToothSize: "حجم الأسنان المقترح",
+        suggestedToothColor: "Suggested Tooth Color",
+        suggestedToothSize: "Suggested Tooth Size",
         smileLineRecommendation: "Smile Line Recommendation",
         midlineRecommendation: "Midline Recommendation"
       },
