@@ -14,6 +14,11 @@ const MAX_FILE_SIZE_BYTES = 8 * 1024 * 1024;
 const ACCEPTED_IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
 const DEMO_MODE_ENABLED = process.env.DEMO_MODE === "true";
 const AI_PROVIDER = process.env.AI_PROVIDER === "openai" || process.env.AI_PROVIDER === "gemini" ? process.env.AI_PROVIDER : "openrouter";
+const PROVIDER_KEY_NAMES = {
+  openai: "OPENAI_API_KEY",
+  gemini: "GEMINI_API_KEY",
+  openrouter: "OPENROUTER_API_KEY"
+} as const;
 const HAS_AI_API_KEY =
   AI_PROVIDER === "openai"
     ? Boolean(process.env.OPENAI_API_KEY)
@@ -47,7 +52,7 @@ function buildErrorResponse(message: string, status = 400) {
 function getFallbackMessage(error: unknown, locale: "en" | "ar"): string {
   const messages = translations[locale].api;
   if (!HAS_AI_API_KEY) {
-    return messages.liveMissingApiKey;
+    return getMissingApiKeyMessage(locale);
   }
 
   const maybeOpenAIError = (error ?? {}) as OpenAIErrorShape;
@@ -78,6 +83,16 @@ function getFallbackMessage(error: unknown, locale: "en" | "ar"): string {
   return messages.liveUnavailable;
 }
 
+function getMissingApiKeyMessage(locale: "en" | "ar"): string {
+  const keyName = PROVIDER_KEY_NAMES[AI_PROVIDER];
+
+  if (locale === "ar") {
+    return `Live analysis is unavailable because ${keyName} is missing. Add it to Vercel Environment Variables, or to .env.local for local development, then redeploy/restart.`;
+  }
+
+  return `Live analysis is unavailable because ${keyName} is missing. Add it to Vercel Environment Variables, or to .env.local for local development, then redeploy/restart.`;
+}
+
 export async function POST(request: Request) {
   let locale: "en" | "ar" = "en";
 
@@ -104,7 +119,7 @@ export async function POST(request: Request) {
         success: true,
         source: "mock",
         analyzedAt: new Date().toISOString(),
-        message: DEMO_MODE_ENABLED ? messages.demoMode : messages.liveMissingApiKey,
+        message: DEMO_MODE_ENABLED ? messages.demoMode : getMissingApiKeyMessage(locale),
         data: getFallbackMockAnalysis(locale)
       });
     }
